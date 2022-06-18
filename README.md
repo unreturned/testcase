@@ -4,6 +4,12 @@ To run:
 docker compose up -d
 ```
 
+or
+
+```
+docker-compose up -d
+```
+
 To post:
 
 ```
