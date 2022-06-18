@@ -1,0 +1,33 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  backend:
+    build: ./backend/.
+    restart: always
+    # ports:
+    #   - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
+      - DB_HOST=database
+      - DB_NAME=application
+    links:
+      - frontend
+      - database
+    volumes:
+      - ./backend/src:/app
+  frontend:
+    image: docker.io/library/nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
+    ports:
+      - "8080:8080"
+  database:
+    image: docker.io/library/postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d/
