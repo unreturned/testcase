@@ -2,6 +2,7 @@ FROM docker.io/library/alpine:latest
 
 RUN apk add --no-cache py3-psycopg2 py3-flask
 
+USER nobody
 WORKDIR /app
 
 COPY src .
