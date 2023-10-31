@@ -15,8 +15,8 @@ services:
     links:
       - frontend
       - database
-    volumes:
-      - ./backend/src:/app
+    #volumes:
+    #  - ./backend/src:/app
   frontend:
     image: docker.io/library/nginx:alpine
     restart: always

@@ -1,10 +1,10 @@
 FROM docker.io/library/alpine:latest
 
-RUN apk update; apk upgrade -a; apk add python3 py3-pip py3-psycopg2 py3-flask
+RUN apk add --no-cache py3-psycopg2 py3-flask
 
 WORKDIR /app
 
-#COPY src .
+COPY src .
 
 EXPOSE 5000
 
